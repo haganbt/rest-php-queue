@@ -1,4 +1,4 @@
 rest-php-queue
 ==============
 
-DataSift REST endpoint with PHP async queue
+Work in progress. DataSift REST endpoint with PHP async queue.
