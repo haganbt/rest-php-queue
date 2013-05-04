@@ -27,7 +27,7 @@ class myTestClass{
     public function doit($id) {
         // here is where you'd do something...
         // we just log and sleep pretending we did something
-        syslog(LOG_INFO, "This is myTestClass.doit running for id:$id");
+        syslog(LOG_INFO, "Working..... for id: $id");
         sleep(1); //. make it look like we did work.
         return;
     }
@@ -40,7 +40,7 @@ try
     $pipe_file="/tmp/queueserver-input";
 
     // create a new queue instance giving the pipefile, true (that we want syslog), syslog_app_name (optional), syslog facility (optional)
-    $Queue = new PhpQueue($pipe_file,true,"Netsuite Order batcher",LOG_LOCAL6);
+    $Queue = new PhpQueue($pipe_file,true,"DataSift Queue Processor",LOG_LOCAL6,0666);
 
     // set this to false if you want to run the daemon on the CLI for debugging
     define('QUEUESERVER_FORK',true);
