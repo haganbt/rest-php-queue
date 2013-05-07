@@ -1,4 +1,4 @@
 rest-php-queue
 ==============
 
-Work in progress. HTTP POST REST endpoint with PHP async queue.
+HTTP POST REST endpoint with PHP queue using using named pipes.
