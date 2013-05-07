@@ -19,16 +19,25 @@ class myTestClass{
     }
 
     /**
-     * doit : simple method that does something needful
+     * process : simple method that does something needful
      * 
      * @param mixed $id 
      * @return void
      */
-    public function doit($id) {
+    public function process($id) {
         // here is where you'd do something...
         // we just log and sleep pretending we did something
-        syslog(LOG_INFO, "Working..... for id: $id");
-        sleep(1); //. make it look like we did work.
+        syslog(LOG_INFO, "Processing: $id");
+		
+		$process_file = '/data/' . $id;
+		
+		if(file_exists($process_file)){
+            if(!unlink($process_file)) {
+                syslog(LOG_INFO, "Unable to delete file.");
+            }   
+        } 
+		
+        sleep(5); //. make it look like we did work.
         return;
     }
 }
@@ -61,7 +70,7 @@ try
     $Queue->setupPipeFile($pipe_file);
 
     // do the queue needful
-    $Queue->readQueue(false,"myTestClass","doit");
+    $Queue->readQueue(false,"myTestClass","process");
 
     // close syslog
     closelog();

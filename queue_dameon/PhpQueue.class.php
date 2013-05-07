@@ -140,13 +140,13 @@ class PhpQueue{
                 //process($job);
                 
                 next($queue);
-                unset($job,$queue[$jobkey]);        
+                unset($job,$queue[$jobkey]);
             } else {
                 if($this->syslog_on){
-                    syslog(LOG_INFO, "no jobs to do - waiting");
+                    syslog(LOG_INFO, "Waiting for work..");
                 }
                 else{
-                    print "no jobs to do - waiting\n";
+                    print "Waiting for work..\n";
                 }
                 stream_set_blocking($pipe,true);
             }
